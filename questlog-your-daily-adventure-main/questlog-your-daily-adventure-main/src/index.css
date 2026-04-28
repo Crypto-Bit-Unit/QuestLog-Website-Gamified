@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* QuestLog — Cyber-fantasy RPG design system. All colors HSL. */
+
+@layer base {
+  :root {
+    /* Deep space backgrounds */
+    --background: 230 35% 7%;
+    --foreground: 200 30% 92%;
+
+    --card: 230 30% 10%;
+    --card-foreground: 200 30% 92%;
+
+    --popover: 230 35% 9%;
+    --popover-foreground: 200 30% 92%;
+
+    /* Cyan / electric primary */
+    --primary: 180 95% 55%;
+    --primary-foreground: 230 40% 8%;
+    --primary-glow: 180 100% 70%;
+
+    /* Magenta / quest violet */
+    --secondary: 280 80% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 230 25% 15%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 45 100% 60%;
+    --accent-foreground: 230 40% 8%;
+
+    --destructive: 0 90% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 50%;
+    --warning: 30 100% 60%;
+
+    --border: 230 30% 20%;
+    --input: 230 30% 15%;
+    --ring: 180 95% 55%;
+
+    --radius: 0.75rem;
+
+    /* Difficulty tiers */
+    --diff-easy: 142 76% 50%;
+    --diff-medium: 200 95% 55%;
+    --diff-hard: 30 100% 60%;
+    --diff-boss: 340 90% 60%;
+
+    /* Stats */
+    --stat-str: 0 85% 60%;
+    --stat-agi: 142 76% 50%;
+    --stat-int: 220 95% 65%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(280 80% 25%) 0%, hsl(230 60% 15%) 50%, hsl(180 80% 20%) 100%);
+    --gradient-xp: linear-gradient(90deg, hsl(180 95% 55%), hsl(280 80% 60%));
+    --gradient-card: linear-gradient(160deg, hsl(230 30% 13%) 0%, hsl(230 35% 8%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 60%), hsl(30 100% 50%));
+
+    /* Shadows / glows */
+    --glow-primary: 0 0 40px hsl(180 95% 55% / 0.4);
+    --glow-secondary: 0 0 40px hsl(280 80% 60% / 0.4);
+    --glow-accent: 0 0 30px hsl(45 100% 60% / 0.5);
+    --shadow-card: 0 8px 32px -8px hsl(230 50% 2% / 0.6);
+
+    /* Sidebar */
+    --sidebar-background: 230 40% 5%;
+    --sidebar-foreground: 200 20% 80%;
+    --sidebar-primary: 180 95% 55%;
+    --sidebar-primary-foreground: 230 40% 8%;
+    --sidebar-accent: 230 30% 12%;
+    --sidebar-accent-foreground: 180 95% 70%;
+    --sidebar-border: 230 30% 15%;
+    --sidebar-ring: 180 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image:
+      radial-gradient(at 15% 10%, hsl(280 80% 20% / 0.35) 0px, transparent 50%),
+      radial-gradient(at 85% 90%, hsl(180 80% 20% / 0.3) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, hsl(230 50% 10% / 0.5) 0px, transparent 70%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .pixel-text {
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 0.05em;
+  }
+  .panel {
+    background: var(--gradient-card);
+    @apply border border-border rounded-lg backdrop-blur-sm;
+    box-shadow: var(--shadow-card);
+  }
+  .panel-glow {
+    background: var(--gradient-card);
+    @apply border border-primary/30 rounded-lg;
+    box-shadow: var(--shadow-card), var(--glow-primary);
+  }
+  .xp-bar {
+    background: var(--gradient-xp);
+    box-shadow: 0 0 20px hsl(180 95% 55% / 0.6);
+  }
+  .gold-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background: hsl(230 30% 10% / 0.6);
+    backdrop-filter: blur(12px);
+    @apply border border-border/50;
+  }
+  .scanline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent 0, transparent 2px, hsl(180 95% 55% / 0.03) 2px, hsl(180 95% 55% / 0.03) 4px);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 12px currentColor;
+  }
+  .border-glow {
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.4), 0 0 24px hsl(var(--primary) / 0.3);
+  }
+}
